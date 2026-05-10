@@ -1,0 +1,16 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nest_starter
+    restart: always
+    env_file:
+      - .env
+    environment:
+      TZ: ${TZ:-Europe/Moscow}
+    ports:
+      - "${PORT:-3000}:${PORT:-3000}"
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
